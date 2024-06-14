@@ -299,7 +299,6 @@ class KahootFlooder:
         except:
             print(f"{Output.gray} {self.__time__()} {Output.reset}({Output.strong_red}!{Output.reset}) {Output.red}ERROR: Failed To Connect Websocket.")
             Stats.failed += 1
-️⃣
 
 if __name__ == "__main__":
     try:
