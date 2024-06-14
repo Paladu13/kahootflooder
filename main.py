@@ -267,9 +267,18 @@ class KahootFlooder:
 
             wsocket.send(json.dumps(Websockets.__clientId2__(self, cid)))
 
+            emojis = [
+                "😀", "😉", "😙", "😐", "😁", "😊", "😚", "😑", "😂", "😋", "☺", "😶", "🤣", "😎", "🙂", "🙄", "😃", "😍", "🤗", "😏", 
+                "😄", "🤩", "😣", "😅", "🥰", "🤔", "😥", "😆", "😗", "🤨", "😮", "😛", "🙃", "😤", "😬", "😌", "😕", "😟", "🤯", "😴", 
+                "🥱", "😓", "😔", "😞", "😖", "😨", "😩", "😫", "😒", "🙁", "😧", "😦", "☹", "🤤", "😠", "😡", "🤬", "😷", "🤒", "🤕", 
+                "🤢", "🤮", "🤫", "🤥", "🤡", "🤠", "🥺", "🥳", "😇", "🤧", "🤭", "🧐", "🤓", "👹", "👿", "👺", "💀", "😸", "😺", "💩", 
+                "🤖", "👾", "👾", "👽", "☠", "👻", "😹", "😻", "😼", "😽", "🙀", "😿", "😾", "🐱‍👤"
+            ]
+
             success = False
             while not success:
-                name = f"{self.bot_names}_{random.randint(999999, 9999999)}"
+                emoji = random.choice(emojis)
+                name = f"{self.bot_names}_{emoji}"
                 wsocket.send(json.dumps(Websockets.__connectID__(self, cid, self.kahoot_id, name)))
                 print(f"{Output.gray} {self.__time__()} {Output.reset}({Output.magenta}^{Output.reset}) {Output.magenta}Connected To Websocket: {Output.light_cyan}{name} {Output.reset}[{Output.orange}{cid}{Output.reset}]")
                 if '"loginResponse","cid":' in wsocket.recv():
@@ -290,6 +299,7 @@ class KahootFlooder:
         except:
             print(f"{Output.gray} {self.__time__()} {Output.reset}({Output.strong_red}!{Output.reset}) {Output.red}ERROR: Failed To Connect Websocket.")
             Stats.failed += 1
+️⃣
 
 if __name__ == "__main__":
     try:
